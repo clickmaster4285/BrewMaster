@@ -34,23 +34,42 @@ const TestimonialsSection = () => {
           </h2>
         </div>
         <div className="max-w-3xl mx-auto">
-          <div className="relative h-64 flex items-center justify-center">
-            {testimonials.map((t, i) => (
-              <div
-                key={i}
-                className={`absolute inset-0 flex flex-col items-center justify-center text-center transition-all duration-700 ${
-                  i === current ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8 pointer-events-none"
-                }`}
-              >
-                <div className="w-16 h-16 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center text-primary font-heading font-bold text-xl mb-6">
-                  {t.avatar}
-                </div>
-                <p className="text-lg md:text-xl text-foreground/90 italic mb-6 leading-relaxed">"{t.quote}"</p>
-                <p className="font-heading font-semibold">{t.name}</p>
-                <p className="text-muted-foreground text-sm">{t.role}</p>
-              </div>
-            ))}
-          </div>
+
+<div className="relative h-72 md:h-80 flex items-center justify-center border rounded-md overflow-hidden px-6">
+  {testimonials.map((t, i) => (
+    <div
+      key={i}
+      className={`absolute inset-0 flex flex-col items-center justify-center text-center px-6 transition-all duration-700 ease-in-out ${
+        i === current
+          ? "opacity-100 translate-y-0"
+          : "opacity-0 translate-y-8 pointer-events-none"
+      }`}
+    >
+      {/* Quote */}
+      <p className="text-base md:text-lg text-foreground/90 mb-6 leading-relaxed max-w-2xl">
+        {t.quote}
+      </p>
+
+      {/* Avatar + Name */}
+      <div className="flex items-center gap-3 mb-2">
+        <div className="w-11 h-11 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center text-primary font-bold text-lg">
+          {t.avatar}
+        </div>
+
+        <p className="font-heading font-semibold">
+          {t.name}
+        </p>
+      </div>
+
+      {/* Role */}
+      <p className="text-muted-foreground text-sm">
+        {t.role}
+      </p>
+    </div>
+  ))}
+</div>
+
+
           <div className="flex justify-center gap-3 mt-8">
             {testimonials.map((_, i) => (
               <button

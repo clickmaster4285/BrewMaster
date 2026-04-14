@@ -1,11 +1,12 @@
 import { useGsapScale } from "@/hooks/useGsap";
 import painImg from "@/assets/painpoints.jpg";
+import { ClipboardList, Package, Clock, BarChart3 } from "lucide-react";
 
 const pains = [
-  { icon: "📋", text: "Batch tracking getting messy?" },
-  { icon: "📦", text: "Stock inconsistencies?" },
-  { icon: "⏳", text: "Manual processes slowing production?" },
-  { icon: "📊", text: "Lack of real-time insights?" },
+  { icon: ClipboardList, text: "Batch tracking getting messy?" },
+  { icon: Package, text: "Stock inconsistencies?" },
+  { icon: Clock, text: "Manual processes slowing production?" },
+  { icon: BarChart3, text: "Lack of real-time insights?" },
 ];
 
 const PainPointsSection = () => {
@@ -23,14 +24,26 @@ const PainPointsSection = () => {
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {pains.map((pain, i) => (
-              <div key={i} className="gsap-scale bg-card border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1">
-                <span className="text-3xl mb-3 block">{pain.icon}</span>
-                <p className="text-foreground font-medium">{pain.text}</p>
+              <div 
+                key={i} 
+                className="gsap-scale group bg-gradient-to-br from-card to-card/80 border border-border rounded-xl p-6 hover:border-primary/50 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+              >
+                <pain.icon className="w-8 h-8 text-primary mb-3 block stroke-[1.5] group-hover:scale-110 transition-transform duration-300" />
+                <p className="text-foreground font-medium text-base md:text-lg group-hover:text-primary transition-colors">
+                  {pain.text}
+                </p>
               </div>
             ))}
           </div>
-          <div className="gsap-scale overflow-hidden rounded-2xl">
-            <img src={painImg} alt="Brewery challenges" loading="lazy" width={1280} height={720} className="w-full h-80 object-cover" />
+          <div className="gsap-scale overflow-hidden rounded-2xl shadow-xl">
+            <img 
+              src={painImg} 
+              alt="Brewery challenges" 
+              loading="lazy" 
+              width={1280} 
+              height={720} 
+              className="w-full h-80 md:h-[450px] object-cover hover:scale-105 transition-transform duration-500" 
+            />
           </div>
         </div>
       </div>
